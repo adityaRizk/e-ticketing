@@ -11,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('jadwal_penerbangan', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_lengkap');
-            $table->string('username');
-            $table->string('password');
-            $table->enum('role',['penumpang','admin','petugas']);
-            $table->rememberToken();
+            $table->unsignedBigInteger('rute_id');
+            $table->foreign('rute_id')->references('id')->on('rute');
+            $table->time('waktu_berangkat');
+            $table->time('waktu_tiba');
+            $table->integer('harga');
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('jadwal_penerbangan');
     }
 };
