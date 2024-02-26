@@ -13,13 +13,15 @@ return new class extends Migration
     {
         Schema::create('rute', function (Blueprint $table) {
             $table->id();
+
             $table->unsignedBigInteger('maskapai_id');
             $table->foreign('maskapai_id')->references('id')->on('maskapai');
+
             $table->date('tanggal_pergi');
-            $table->unsignedBigInteger('rute_asal');
-            $table->foreign('rute_asal')->references('id')->on('kota');
-            $table->unsignedBigInteger('rute_tujuan');
-            $table->foreign('rute_tujuan')->references('id')->on('kota');
+
+            $table->string('rute_asal');
+
+            $table->string('rute_tujuan');
             $table->timestamps();
         });
     }

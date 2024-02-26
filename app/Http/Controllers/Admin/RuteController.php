@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Kota;
 use App\Models\Rute;
-use App\Http\Controllers\Controller;
+use App\Models\Maskapai;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class RuteController extends Controller
 {
@@ -22,7 +24,10 @@ class RuteController extends Controller
      */
     public function create()
     {
-        //
+        $kota = Kota::all();
+        // dd($kota);
+        $maskapai = Maskapai::all();
+        return view('admin.rute.create', compact('maskapai', 'kota'));
     }
 
     /**
@@ -30,7 +35,16 @@ class RuteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $credential = $request->validate([
+            'maskapai_id' => ['required'],
+            'tanggal_pergi' => ['required'],
+            'rute_asal' => ['required'],
+            'rute_tujuan' => ['required'],
+        ]);
+        // dd($credential);
+        Rute::create($credential);
+
+        return redirect('/admin/rute')->with('success', 'Data rute berhasil ditambahkan');
     }
 
     /**
@@ -46,7 +60,10 @@ class RuteController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $kota = Kota::all();
+        $maskapai = Maskapai::all();
+        $rute = Rute::find($id);
+        return view('admin.rute.edit', compact('rute', 'kota', 'maskapai'));
     }
 
     /**
@@ -54,7 +71,15 @@ class RuteController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $credential = $request->validate([
+            'maskapai_id' => ['required'],
+            'tanggal_pergi' => ['required'],
+            'rute_asal' => ['required'],
+            'rute_tujuan' => ['required'],
+        ]);
+        $rute = Rute::find($id);
+        $rute->update($credential);
+        return redirect('/admin/rute')->with('success', 'Data rute berhasil diubah');
     }
 
     /**
@@ -62,6 +87,8 @@ class RuteController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $rute = Rute::find($id);
+        $rute->delete();
+        return redirect('/admin/rute')->with('success', 'Data rute berhasil dihapus');
     }
 }

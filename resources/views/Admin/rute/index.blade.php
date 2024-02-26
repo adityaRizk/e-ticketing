@@ -15,10 +15,10 @@
         @foreach ($rute as $data)
             <tr>
                 <td>{{ $loop->iteration }}</td>
-                <td>{{ $data->maskapai->nama_maskapai }}</td>
-                <td>{{ $data->tanggal_pergi }}</td>
-                <td>{{ $data->kota->nama_kota }}</td>
-                <td>{{ $data->rute_asal }}</td>
+                <td>{{ $data->maskapai->nama_maskapai ?? 'none' }}</td>
+                <td>{{ $data->tanggal_pergi ?? 'none.' }}</td>
+                <td>{{ $data->rute_asal ?? 'none.' }}</td>
+                <td>{{ $data->rute_tujuan ?? 'none.' }}</td>
                 <td>
                     <a href="/admin/rute/{{ $data->id }}/edit">Edit</a>
                     <a href="/admin/rute/{{ $data->id }}/delete" onclick="return confirm('Yakin Ingin Menghapus?')">Delete</a>

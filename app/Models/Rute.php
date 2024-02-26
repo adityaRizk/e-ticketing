@@ -14,20 +14,11 @@ class Rute extends Model
     /**
      * Get the maskapai associated with the Rute
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     * @return \Illuminate\Database\Eloquent\Relations\
      */
     public function maskapai()
     {
-        return $this->hasOne(Maskapai::class, 'id');
+        return $this->belongsTo(Maskapai::class);
     }
 
-    /**
-     * Get the kota associated with the Rute
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
-     */
-    public function kota()
-    {
-        return $this->hasOne(Kota::class, 'id');
-    }
 }
