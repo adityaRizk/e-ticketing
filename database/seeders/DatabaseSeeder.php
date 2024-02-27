@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Models\Jadwal;
 use App\Models\Kota;
 use App\Models\Maskapai;
 use Illuminate\Database\Seeder;
@@ -64,6 +65,13 @@ class DatabaseSeeder extends Seeder
             'rute_asal' => 'Jakarta',
             'rute_tujuan' => 'Bali',
             'tanggal_pergi' => '2006-02-01',
+        ]);
+
+        Jadwal::create([
+            'rute_id' => 1,
+            'waktu_berangkat' => '10:00:00',
+            'waktu_tiba' => '20:00:00',
+            'harga' => '1000000000',
         ]);
     }
 }

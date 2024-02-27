@@ -1,13 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Models\Kota;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class KotaController extends Controller
 {
-    /**
+        /**
      * Display a listing of the resource.
      */
     public function index()
