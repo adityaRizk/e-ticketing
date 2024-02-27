@@ -74,6 +74,7 @@ class PenggunaController extends Controller
             'role' => 'required',
         ]);
 
+        $credential['password'] = bcrypt($credential['password']);
         User::find($id)->update($credential);
 
         return redirect('/admin/pengguna')->with('success', 'Data pengguna berhasil diubah');

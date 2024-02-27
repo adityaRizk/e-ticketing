@@ -1,17 +1,19 @@
 <?php
 
-use App\Http\Controllers\Admin\JadwalController;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Admin\KotaController;
+use App\Http\Controllers\Admin\RuteController;
+use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\JadwalController;
+use App\Http\Controllers\Admin\PetugasController;
 use App\Http\Controllers\Admin\MaskapaiController;
 use App\Http\Controllers\Admin\PenggunaController;
-use App\Http\Controllers\Admin\PetugasController;
-use App\Http\Controllers\Admin\RuteController;
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\AuthController;
+use App\Http\Controllers\Penumpang\KeranjangController;
 use App\Http\Controllers\Penumpang\PenumpanagController;
-use App\Http\Controllers\Petugas\JadwalController as PetugasJadwalController;
+use App\Http\Controllers\Penumpang\TiketController;
 use App\Http\Controllers\Petugas\RuteController as PetugasRuteController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Petugas\JadwalController as PetugasJadwalController;
 
 /*
 |--------------------------------------------------------------------------
@@ -105,6 +107,23 @@ Route::prefix('penumpang')->group(function (){
 
     Route::get('/',[PenumpanagController::class, 'index']);
 
+    Route::prefix('tiket')->controller(TiketController::class)->group(function (){
+
+        Route::get('/','index');
+        Route::get('/pesan','pesan');
+        Route::post('/pesan','pesanTiket');
+
+    });
+
+    Route::prefix('keranjang')->controller(KeranjangController::class)->group(function (){
+
+        Route::get('/','index');
+        Route::get('/{id}/tambah-keranjang','store');
+        Route::get('/{id}/hapus-keranjang','hapus');
+        Route::get('/{id}/plus-keranjang','tambah');
+        Route::get('/{id}/min-keranjang','kurang');
+
+    });
 });
 
 // Route::get('/admin', function () {

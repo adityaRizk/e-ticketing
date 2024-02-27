@@ -43,6 +43,8 @@
                   <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
                   <a href="/penumpang" class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Dashboard</a>
                   <a href="/penumpang/tiket" class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Tiket</a>
+                  <a href="/penumpang/keranjang" class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Keranjang</a>
+                  <a href="/penumpang/tiket" class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Riwayat Pemesanan</a>
                   {{-- <a href="/admin/pengguna" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Penumpang</a> --}}
                   <a href="/logout" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Logout</a>
                 </div>

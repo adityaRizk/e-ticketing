@@ -53,4 +53,14 @@ class User extends Authenticatable
     {
         return $this->hasMany(Order::class);
     }
+
+    /**
+     * The keranjang that belong to the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function keranjang()
+    {
+        return $this->belongsToMany(Jadwal::class, 'keranjang', 'user_id', 'jadwal_id')->withPivot('qty');
+    }
 }

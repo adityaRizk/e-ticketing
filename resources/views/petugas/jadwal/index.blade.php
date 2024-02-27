@@ -6,6 +6,8 @@
     <table>
         <tr>
             <th>No</th>
+            <th>Maskapai</th>
+            <th>Kapasitas</th>
             <th>Rute Asal</th>
             <th>Rute Tujuan</th>
             <th>Waktu Berangkat</th>
@@ -16,6 +18,8 @@
         @foreach ($jadwal as $data)
             <tr>
                 <td>{{ $loop->iteration }}</td>
+                <td>{{ $data->rute->maskapai->nama_maskapai }}</td>
+                <td>{{ $data->rute->maskapai->kapasitas }}</td>
                 <td>{{ $data->rute->rute_asal }}</td>
                 <td>{{ $data->rute->rute_tujuan }}</td>
                 <td>{{ $data->waktu_berangkat }}</td>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Penumpang;
 
 use App\Http\Controllers\Controller;
+use App\Models\Jadwal;
 use Illuminate\Http\Request;
 
 class TiketController extends Controller
@@ -12,7 +13,8 @@ class TiketController extends Controller
      */
     public function index()
     {
-        //
+        $jadwal = Jadwal::all();
+        return view('penumpang.tiket.index', compact('jadwal'));
     }
 
     /**
